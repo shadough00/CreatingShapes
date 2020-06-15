@@ -21,24 +21,27 @@ public class DrawingShapes {
 		int tri_length = 0;
 		//hexagon
 		int hex_length = 0;
-		int space_max = 0;
-		int hex_row = 0;
-		int hex_star = 0;
-		int hex_final_star = 0;
 		int num_space = 0;
-		//Create Scanner for user input and for user input and store it in variable
+		//Create Scanner for user input
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("Enter a shape: r t h o p");
+
+		//Ask for shape to create and store answer
+		System.out.println("Type \"r\" for rectangle");
+		System.out.println("Type \"t\" for triangle");
+		System.out.println("Type \"h\" for hexagon");
+		System.out.println("Type \"o\" for octagon");
+		System.out.println("Type \"p\" for pentagon");
+		System.out.print("Enter a shape:\t");
 		shape_choice = keyboard.next();
 
 		//If-else statements for each shape
 		if (shape_choice.equals(rectangle)) {
-			
+
 			System.out.println("Enter a length");
 			rect_length = keyboard.nextInt();
 			System.out.println("Enter a height");
 			rect_height = keyboard.nextInt();
-			
+
 			while (rect_column < rect_height) {
 				for (rect_row = 0; rect_row < rect_length; rect_row++) {
 					System.out.print("*");
@@ -46,12 +49,12 @@ public class DrawingShapes {
 				System.out.print("\n");
 				rect_column++;
 			}
-			
+
 		} else  if (shape_choice.equals(triangle)) {
 			System.out.println("Enter a length");
 			tri_length = keyboard.nextInt();
-			
-		
+
+
 			//check for valid input
 			if (tri_length > 1) {
 				;
@@ -59,7 +62,7 @@ public class DrawingShapes {
 				System.out.print("Invalid Input");
 				System.exit(0);
 			}
-			
+
 			for (int q = 1; q <= tri_length; q++) {
 				for (int b = tri_length; b >= q; b--) {
 					System.out.print(" ");
@@ -69,11 +72,11 @@ public class DrawingShapes {
 				}
 				System.out.print("\n");
 			}
-			
+
 		} else if (shape_choice.equals(hexagon)) {
 			System.out.println("Enter a length");
 			hex_length = keyboard.nextInt();
-			
+
 			//check for valid input
 			if (hex_length > 1) {
 				;
@@ -81,30 +84,38 @@ public class DrawingShapes {
 				System.out.print("Invalid Input");
 				System.exit(0);
 			}
+			//starting number of spaces
+			num_space = hex_length;
+			num_space--;
+			//creating loop for the top half of the pentagon
+			int p = -1;
+			while (p < num_space) {
+				System.out.print(" ");
+				p++;
 			
-			space_max = hex_length - 1;
-			
-			for (hex_row = 1; hex_row <= hex_length; hex_row++, space_max--) {
-				num_space = 0;
-				
-				while (num_space < space_max) {
+				//creating loop for spaces
+				for (int i = 0; num_space > i; i++) {
 					System.out.print(" ");
-					num_space++;
 				}
-				hex_star = 0;
-				hex_final_star = hex_length + (hex_row - 1) * 2;
-				while (hex_star < hex_final_star) {
+				//creating starting stars
+				int q = 0;
+				while (hex_length > q) {
+					q++;
 					System.out.print("*");
-					hex_star++;
 				}
-				System.out.print("*");
+				//creating loop for stars after spaces
+				
+				
+				
+				
+				
+				System.out.print("\n");
 			}
-			
-			
-			
-			
-			
-			
+
+
+
+
+
 		} else if (shape_choice.equals(octagon)) {
 			;
 		} else if (shape_choice.equals(pentagon)) {
